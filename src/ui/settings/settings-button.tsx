@@ -114,41 +114,39 @@ function SettingsModal({ onClose }: { onClose: () => void }) {
         onClose={rollbackAndClose}
         sidebar={<SidebarNav active={active} onSelect={setActive} />}
         footer={
-          <div className="flex w-full flex-col gap-2">
-            <div className="flex flex-wrap items-center gap-2">
-              <Button variant="outline" size="sm" disabled={!hasSettings} onClick={() => fileInputRef.current?.click()}>
-                <Upload className="size-3.5" />
-                导入配置
-              </Button>
-              <Button
-                variant="outline"
-                size="sm"
-                disabled={!hasSettings}
-                onClick={() => {
-                  if (!settings) return
-                  downloadJson(settings, 'boss-helper-lite-settings.json')
-                  setNotice('配置已导出')
-                }}
-              >
-                <Download className="size-3.5" />
-                导出配置
-              </Button>
-              <Button
-                variant="outline"
-                size="sm"
-                disabled={!hasSettings}
-                onClick={() => {
-                  setSettings(cloneSettings(DEFAULT_SETTINGS))
-                  setNotice('已恢复默认配置（未保存）')
-                }}
-              >
-                <RotateCcw className="size-3.5" />
-                恢复默认
-              </Button>
-            </div>
+          <div className="flex w-full items-center gap-2">
+            <Button variant="ghost" size="sm" disabled={!hasSettings} onClick={() => fileInputRef.current?.click()}>
+              <Upload className="size-3.5" />
+              导入
+            </Button>
+            <Button
+              variant="ghost"
+              size="sm"
+              disabled={!hasSettings}
+              onClick={() => {
+                if (!settings) return
+                downloadJson(settings, 'boss-helper-lite-settings.json')
+                setNotice('配置已导出')
+              }}
+            >
+              <Download className="size-3.5" />
+              导出
+            </Button>
+            <Button
+              variant="ghost"
+              size="sm"
+              disabled={!hasSettings}
+              onClick={() => {
+                setSettings(cloneSettings(DEFAULT_SETTINGS))
+                setNotice('已恢复默认配置（未保存）')
+              }}
+            >
+              <RotateCcw className="size-3.5" />
+              恢复默认
+            </Button>
 
-            <div className="flex items-center gap-2">
-              {notice ? <p className="mr-auto text-xs text-muted-foreground">{notice}</p> : null}
+            <div className="ml-auto flex items-center gap-2">
+              {notice ? <p className="text-xs text-muted-foreground">{notice}</p> : null}
               <Button variant="outline" size="sm" onClick={rollbackAndClose}>
                 取消
               </Button>
@@ -165,8 +163,8 @@ function SettingsModal({ onClose }: { onClose: () => void }) {
   )
 }
 
-export function SettingsButton() {
-  const [open, setOpen] = useState(false)
+export function SettingsButton({ defaultOpen = false }: { defaultOpen?: boolean }) {
+  const [open, setOpen] = useState(defaultOpen)
 
   return (
     <>
