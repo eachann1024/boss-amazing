@@ -107,28 +107,39 @@ export function SettingsModalShell({
   footer: ReactNode
 }) {
   return (
-    <div className="pointer-events-auto fixed inset-0 z-[99999] flex items-center justify-center bg-slate-900/22 p-3 backdrop-blur-[3px] md:p-6" onClick={(e) => e.target === e.currentTarget && onClose()}>
-      <Card className="relative flex h-[min(88vh,860px)] w-[min(1340px,97vw)] flex-col overflow-hidden rounded-[20px] shadow-[0_40px_96px_-48px_rgba(15,23,42,0.65)]">
-        <div className="flex h-16 shrink-0 items-center justify-between border-b border-border px-5 md:px-7">
-          <div>
-            <p className="text-lg font-semibold leading-none text-foreground md:text-[22px]">{title}</p>
-            <p className="mt-1 text-xs text-muted-foreground">{subtitle}</p>
+    <div
+      className="pointer-events-auto fixed inset-0 z-[99999] flex items-center justify-center bg-black/40 p-3 md:p-6"
+      onClick={(e) => e.target === e.currentTarget && onClose()}
+    >
+      <Card className="relative flex h-[min(90vh,860px)] w-[min(960px,97vw)] flex-col overflow-hidden rounded-xl border border-border shadow-2xl">
+        {/* Header */}
+        <div className="flex h-[60px] shrink-0 items-center justify-between border-b border-border bg-card px-6">
+          <div className="flex items-center gap-2.5">
+            <p className="text-base font-semibold text-foreground">{title}</p>
+            <span className="text-muted-foreground/40">·</span>
+            <p className="text-sm text-muted-foreground">{subtitle}</p>
           </div>
           <button
             onClick={onClose}
-            className="flex size-9 items-center justify-center rounded-full border border-transparent text-muted-foreground transition-colors hover:border-border hover:bg-muted/70 hover:text-foreground"
+            className="flex size-8 items-center justify-center rounded-md text-muted-foreground transition-colors hover:bg-muted hover:text-foreground"
             aria-label="关闭设置"
           >
-            <X className="size-5" />
+            <X className="size-4" />
           </button>
         </div>
 
-        <div className="min-h-0 flex-1 bg-background/85 md:flex">
+        {/* Body */}
+        <div className="min-h-0 flex-1 md:flex">
           {sidebar}
-          <main className="min-h-0 flex-1 overflow-y-auto border-t border-border/80 bg-card px-4 py-4 md:border-t-0 md:border-l md:border-border/80 md:px-8 md:py-7">{children}</main>
+          <main className="min-h-0 flex-1 overflow-y-auto bg-background px-6 py-6 md:border-l md:border-border md:px-8 md:py-7">
+            {children}
+          </main>
         </div>
 
-        <div className="flex shrink-0 items-center justify-end gap-2 border-t border-border bg-card px-4 py-3 md:px-7">{footer}</div>
+        {/* Footer */}
+        <div className="flex shrink-0 items-center justify-end gap-2 border-t border-border bg-card px-6 py-3">
+          {footer}
+        </div>
       </Card>
     </div>
   )
