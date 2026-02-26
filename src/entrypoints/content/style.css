@@ -1,0 +1,12 @@
+@import '../../ui/globals.css';
+
+#boss-helper-lite-root {
+  position: fixed;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+}
+
+#boss-helper-lite-root button:disabled {
+  cursor: not-allowed;
+}
