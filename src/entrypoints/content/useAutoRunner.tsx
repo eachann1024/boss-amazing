@@ -86,7 +86,7 @@ export function useAutoRunner() {
   const start = React.useCallback(async () => {
     if (!settings || !stats) return
     if (!settings.ai.apiKey) {
-      setState((prev) => ({ ...prev, message: '请先配置 AI Key' }))
+      setState((prev) => ({ ...prev, message: '请先配置接口密钥' }))
       return
     }
 

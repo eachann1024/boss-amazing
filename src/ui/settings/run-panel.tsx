@@ -17,7 +17,7 @@ export function RunPanel() {
     <SettingsPage title={PAGE_META.run.title} description={PAGE_META.run.description}>
       <SettingsCard title="当前状态" description={state.message || (state.running ? '运行中' : '待机')}>
         <SettingsBetween
-          left={<Badge variant={state.running ? 'default' : 'secondary'}>{state.running ? 'RUNNING' : 'IDLE'}</Badge>}
+          left={<Badge variant={state.running ? 'default' : 'secondary'}>{state.running ? '运行中' : '待机'}</Badge>}
           right={<span className="text-xs text-muted-foreground">进度：{state.currentIndex}/{state.total}</span>}
         />
         <SettingsInline>
