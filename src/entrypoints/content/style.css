@@ -1,0 +1,13 @@
+@import '../../ui/globals.css';
+@import '@blocknote/shadcn/style.css';
+
+#boss-awesome-root {
+  position: fixed;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+}
+
+#boss-awesome-root button:disabled {
+  cursor: not-allowed;
+}
