@@ -54,7 +54,7 @@ export function BlocknoteMarkdownEditor({
         formattingToolbar={false}
         linkToolbar={false}
         sideMenu={false}
-        className="min-h-[320px] [&_.bn-editor]:bg-white"
+        className="min-h-[320px] [&_.bn-container]:bg-white [&_.bn-container]:[--bn-colors-editor-background:#ffffff] [&_.bn-editor]:!bg-white"
         onChange={() => {
           const next = editor.blocksToMarkdownLossy(editor.document)
           if (next === lastMarkdownRef.current) return
