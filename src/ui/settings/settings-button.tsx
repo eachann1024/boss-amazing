@@ -163,8 +163,8 @@ function SettingsModal({ onClose }: { onClose: () => void }) {
   )
 }
 
-export function SettingsButton() {
-  const [open, setOpen] = useState(false)
+export function SettingsButton({ defaultOpen = false }: { defaultOpen?: boolean }) {
+  const [open, setOpen] = useState(defaultOpen)
 
   return (
     <>
