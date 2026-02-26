@@ -35,7 +35,7 @@ export async function mountContentUI() {
   const container = document.createElement('div')
   container.id = ROOT_ID
   shadowRoot.appendChild(container)
-  document.documentElement.appendChild(host)
+  ;(document.body || document.documentElement).appendChild(host)
 
   const root = createRoot(container)
   root.render(<ContentApp rootContainer={container} />)
