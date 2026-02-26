@@ -1,6 +1,6 @@
 import { useEffect, useRef } from 'react'
 import { zh } from '@blocknote/core/locales'
-import { useCreateBlockNote } from '@blocknote/react'
+import { DragHandleButton, SideMenu, SideMenuController, useCreateBlockNote, type SideMenuProps } from '@blocknote/react'
 import { BlockNoteView } from '@blocknote/shadcn'
 import { cn } from '@/shared/cn'
 
@@ -15,6 +15,14 @@ export function BlocknoteMarkdownEditor({
   onMarkdownChange: (value: string) => void
   className?: string
 }) {
+  const HandleOnlySideMenu = (props: SideMenuProps) => {
+    return (
+      <SideMenu {...props}>
+        <DragHandleButton {...props} />
+      </SideMenu>
+    )
+  }
+
   const editor = useCreateBlockNote({
     dictionary: {
       ...zh,
@@ -53,7 +61,9 @@ export function BlocknoteMarkdownEditor({
           lastMarkdownRef.current = next
           onMarkdownChange(next)
         }}
-      />
+      >
+        <SideMenuController sideMenu={HandleOnlySideMenu} />
+      </BlockNoteView>
     </div>
   )
 }
